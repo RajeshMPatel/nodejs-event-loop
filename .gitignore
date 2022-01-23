@@ -1,3 +1,4 @@
+outputs/
 node_modules/.bin/_mocha
 node_modules/.bin/esparse
 node_modules/.bin/esvalidate
