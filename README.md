@@ -13,7 +13,14 @@ This example can be implemented using C++ example I posted earlier. There you wo
 
 In node.js world, the idea is similar. Here, instead of post, we generate an event by implementing EventEmitter and calling emit. This will then invoke the callback function. There you do the processing as you would in C++ world. In both cases, we do not poll. We do not create a separate thread and wait in that thread. Events are generated and posted to the same thread which processes in the order the events are received.
 
-The underlying framework for nodejs and boost asio is the same. They both use EPOLL, kQueue or IOCP mechanism in Linux, Mac and Windows platforms respectively. nodejs is single threaded as are some of the high performance written in C/C++ such as nginx. So we do not lose performance advantage and due to asynchrnous nature, it nodejs scales to a large number of event producers
+The underlying framework for nodejs and boost asio is the same. They both use EPOLL, kQueue or IOCP mechanism in Linux, Mac and Windows platforms respectively. nodejs is single threaded as are some of the high performance written in C/C++ such as nginx. So we do not lose performance advantage and due to asynchrnous nature, it nodejs scales to a large number of event producers.
+
+| Events | C/C++ | Node.js |
+| ------ | ------- | ------- |
+| File Change Event | inotify or FindFirstChangeNotification on File Descriptor or Handle  | fs.watch |
+| Network Events | received on socket (close, data available, new connection)  | Net class provides the same events |
+| Process Events | received on Process Descriptor or Handle (exit, SIGINT etc.)  | process class provides the same events |
+| ...|||
 
 ## Implementation
 ### To run the program:
