@@ -9,9 +9,9 @@
 // We can also use bunyan and other sophisticated loggers.
 
 function log(message) {
-    //const now = Date.now();
-    //console.log(`${now}: ${message}`);
-    console.log(message);
+  //const now = Date.now();
+  //console.log(`${now}: ${message}`);
+  console.log(message);
 }
 
 module.exports.log = log;

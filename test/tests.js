@@ -11,31 +11,30 @@ describe('testRunningAvg()', function () {
     rAvg = 0;
     total = 0;
     for (let i=1; i<10; i++) {
-        data = 10*i;
-        total += data;
-        avg = total/i;
-        rAvg = tests.runningAvg(rAvg, i-1, data);
-        expect(avg).to.be.equal(rAvg);
+      data = 10*i;
+      total += data;
+      avg = total/i;
+      rAvg = tests.runningAvg(rAvg, i-1, data);
+      expect(avg).to.be.equal(rAvg);
     }
   });
 });
 
 describe('testMapFind()', function () {
   it('Test Find Items in Map', function () {
-
     // generate order and driver data
     for (let i=0; i<10; i++) {
-        let id = "order-" + i;
-        let name = "name-" + id;
-        let fulfilTime = 10;
-        let order = new Order(id, name, fulfilTime);
+      let id = "order-" + i;
+      let name = "name-" + id;
+      let fulfilTime = 10;
+      let order = new Order(id, name, fulfilTime);
 
-        let driver = new Driver(i, order.createTime, 10);
-        driver.orderId = order.id;
-        order.driverId = driver.id;
-    
-        orderMap.set(order.id, order);
-        driverMap.set(driver.id, driver);
+      let driver = new Driver(i, order.createTime, 10);
+      driver.orderId = order.id;
+      order.driverId = driver.id;
+  
+      orderMap.set(order.id, order);
+      driverMap.set(driver.id, driver);
     }
 
     console.log("\tTest: Find non-existing order. Should return null");
